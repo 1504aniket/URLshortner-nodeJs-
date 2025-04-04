@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');  // Import path module
 const app = express();
 const PORT = 3000;
 const Url = require('./models/url'); // Capitalize model name (convention)
@@ -8,8 +9,9 @@ const db = require('./db');
 
 app.use(bodyParser.json());
 
+// Serve the form.html file when home page is requested
 app.get('/', (req, res) => {
-    res.send('Hello from URL Shortener');
+    res.sendFile(path.join(__dirname, 'form.html'));
 });
 
 // Create a Short URL
